@@ -1,12 +1,14 @@
 {
-  "name": "curses",
+  "name": "top",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "stylelint": "stylelint \"**/*.css\" --fix",
+    "debugg": "NODE_OPTIONS='inspect' next dev"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -19,5 +21,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-order": "^6.0.2",
+    "stylelint-order-config-standard": "^0.1.3"
   }
 }
