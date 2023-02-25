@@ -19,4 +19,4 @@ function Home(): JSX.Element {
     </>
   );
 }
-export default withLayout(Home)
+export default withLayout(Home);
