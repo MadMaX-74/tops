@@ -3,10 +3,11 @@ import Button from "@/components/Button/Button";
 import Ptag from "@/components/Ptag/Ptag";
 import Tag from "@/components/Tag/Tag";
 import Rating from "@/components/Rating/Rating";
+import {withLayout} from "../../layout/Layout";
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   return (
-    <>
+    < >
         <Htag tag='h1'>Курсы по Photoshop</Htag>
         <Button appearance="primary">Узнать подробнее</Button>
         <Button appearance="ghost" arrow="right">Узнать подробнее</Button>
@@ -18,3 +19,4 @@ export default function Home(): JSX.Element {
     </>
   );
 }
+export default withLayout(Home)
