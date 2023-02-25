@@ -3,19 +3,18 @@ import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import {LayoutProps} from "./Layout.props";
 import Sidebar from './Sidebar/Sidebar';
+import classes from "./Layout.module.css";
 
 function Layout({children} :LayoutProps) :JSX.Element{
     return (
-        <>
-            <Header />
-            <div>
-                <Sidebar />
-                <div>
-                    {children}
-                </div>
+        <div className={classes.wrapper}>
+            <Header className={classes.header} />
+            <Sidebar className={classes.sidebar} />
+            <div className={classes.body}>
+                {children}
             </div>
-            <Footer />
-        </>
+            <Footer className={classes.footer }/>
+        </div>
     );
 }
 
