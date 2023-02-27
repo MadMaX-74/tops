@@ -36,6 +36,12 @@
     font-size: 14px;
     line-height: 19px;
 }
+.secondLevelBlock {
+    display: none;
+}
+.secondLevelBlockOpened {
+    display: block;
+}
 .thirdLevel {
     display: block;
     margin-bottom: 10px;
