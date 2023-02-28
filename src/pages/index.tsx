@@ -3,11 +3,11 @@ import Button from "@/components/Button/Button";
 import Ptag from "@/components/Ptag/Ptag";
 import Tag from "@/components/Tag/Tag";
 import Rating from "@/components/Rating/Rating";
-import {withLayout} from "../layout/Layout";
+import {withLayout} from "@/layout/Layout";
 import {GetStaticProps} from "next";
-import axios from "axios";
 import * as process from "process";
-import {MenuItem} from "../interfaces/menu.interface";
+import {MenuItem} from "@/interfaces/menu.interface";
+import axios from "axios";
 
 function Home({menu} :HomeProps): JSX.Element {
   return (

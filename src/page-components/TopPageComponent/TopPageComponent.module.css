@@ -1,0 +1,34 @@
+.title{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-items: left;
+    gap: 20px;
+}
+.hh_title{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    justify-items: left;
+    gap:20px;
+}
+.seo h1{
+    margin: 0;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 35px;
+}
+.seo h2{
+    margin: 50px 0 20px 0;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 30px;
+}
+.seo h3{
+    margin: 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+
