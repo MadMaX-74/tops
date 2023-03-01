@@ -29,7 +29,7 @@
 .green {
     color: var(--green);
     background-color: var(--green-light);
-    font-size: 600px;
+    font-weight: 600;
 }
 .primary {
     color: var(--primary);

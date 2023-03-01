@@ -9,6 +9,7 @@ import Advantages from "@/components/Advantages/Advantages";
 import {SortEnum} from "@/components/Sort/Sort.props";
 import Sort from '@/components/Sort/Sort';
 import {SortReducer} from "@/page-components/TopPageComponent/sort.reducer";
+import Product from "@/components/Product/Product";
 
 function TopPageComponent({page, firstCategory, products} :TopPageComponentProps) :JSX.Element {
     const [{products: sortedProducts, sort}, dispathSort] = useReducer(SortReducer, {products, sort: SortEnum.Rating});
@@ -23,7 +24,7 @@ function TopPageComponent({page, firstCategory, products} :TopPageComponentProps
                 <Sort sort={sort} setSort={setSort} />
             </div>
             <div>
-                {sortedProducts && sortedProducts.map(p => (<div key={p._id}>{p.title}</div>))}
+                {sortedProducts && sortedProducts.map(p => (<Product key={p._id} product={p} />))}
             </div>
             <div className={classes.hh_title}>
                 <Htag tag='h2'>Вакансии - {page.category}</Htag>

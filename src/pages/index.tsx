@@ -8,6 +8,8 @@ import {GetStaticProps} from "next";
 import * as process from "process";
 import {MenuItem} from "@/interfaces/menu.interface";
 import axios from "axios";
+import Input from "@/components/Input/Input";
+import Textarea from "@/components/Textarea/Textarea";
 
 function Home({menu} :HomeProps): JSX.Element {
   return (
@@ -20,7 +22,8 @@ function Home({menu} :HomeProps): JSX.Element {
         </Ptag>
         <Tag>Photoshop</Tag>
         <Rating rating={4} isEditable/>
-
+        <Input placeholder="test" />
+        <Textarea placeholder="test" />
     </>
   );
 }
