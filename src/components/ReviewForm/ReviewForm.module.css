@@ -1,0 +1,22 @@
+.reviewForm {
+    font-size: 14px;
+    line-height: 24px;
+    display :grid;
+    grid-template-columns: [start] auto 1fr auto [end];
+    align-items: center;
+    gap: 20px 30px;
+}
+.description {
+    grid-column: start / end;
+}
+.submit {
+    grid-column: start / end;
+}
+.title {
+    justify-self: left;
+}
+.rating {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+}

@@ -12,6 +12,7 @@ import {declOfNum, priceRu} from "@/helpers/helpers";
 import Devider from "@/components/Devider/Devider";
 import Image from "next/image";
 import Review from "@/components/Review/Review";
+import ReviewForm from "@/components/ReviewForm/ReviewForm";
 
 function Product({product, className, ...props} :ProductProps) :JSX.Element {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
@@ -70,7 +71,12 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
                 [classes.opened] : isReviewOpened,
                 [classes.closed]: !isReviewOpened
             })}>
-                {product.reviews.map(r => <Review key={r._id} review={r} />)}
+                {product.reviews.map(r =>
+                    <>
+                        <Review key={r._id} review={r} />
+                        <Devider />
+                    </>)}
+                <ReviewForm productId={product._id} />
             </Card>
         </>
     );
