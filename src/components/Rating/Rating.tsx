@@ -1,10 +1,10 @@
-import React, {useEffect, useState, KeyboardEvent} from 'react';
+import React, {useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef} from 'react';
 import classes from "./Rating.module.css";
 import cn from "classnames";
 import {RatingProps} from "@/components/Rating/Rating.props";
 import StarIcon from './star.svg';
 
-function Rating({isEditable = false, rating, setRating, ...props} :RatingProps) :JSX.Element {
+export const Rating  = forwardRef( ({isEditable = false, rating, setRating, ...props} :RatingProps, ref: ForwardedRef<HTMLDivElement>) :JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
     useEffect(() => {
         constructRating(rating);
@@ -13,7 +13,7 @@ function Rating({isEditable = false, rating, setRating, ...props} :RatingProps) 
     const constructRating = (currentRating :number) => {
         const updatedArray = ratingArray.map((r:JSX.Element, i:number) => {
             return (
-                <span className={cn(classes.star, {
+                <span key={i} className={cn(classes.star, {
                     [classes.filled]: i < currentRating,
                     [classes.editable]: isEditable})}
                       onMouseEnter={() => changeRatingView(i + 1)}
@@ -47,10 +47,9 @@ function Rating({isEditable = false, rating, setRating, ...props} :RatingProps) 
         setRating(i);
     };
     return (
-        <div {...props}>
+        <div {...props} ref={ref}>
             {ratingArray.map((r, i) => (<span key={i}>{r}</span>))}
         </div>
     );
-}
+});
 
-export default Rating;

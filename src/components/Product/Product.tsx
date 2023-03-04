@@ -4,7 +4,7 @@ import cn from "classnames";
 import {ProductProps} from "@/components/Product/Product.props";
 import Card from "@/components/Card/Card";
 import Htag from '../Htag/Htag';
-import Rating from "@/components/Rating/Rating";
+import {Rating} from "@/components/Rating/Rating";
 import Tag from "@/components/Tag/Tag";
 import * as process from "process";
 import Button from "@/components/Button/Button";
@@ -72,10 +72,10 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
                 [classes.closed]: !isReviewOpened
             })}>
                 {product.reviews.map(r =>
-                    <>
-                        <Review key={r._id} review={r} />
+                    <div key={r._id}>
+                        <Review review={r} />
                         <Devider />
-                    </>)}
+                    </div>)}
                 <ReviewForm productId={product._id} />
             </Card>
         </>

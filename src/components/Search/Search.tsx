@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from "./Search.module.css";
 import cn from "classnames";
 import {SearchProps} from "@/components/Search/Search.props";
-import Input from "@/components/Input/Input";
+import {Input} from "@/components/Input/Input";
 import Button from "@/components/Button/Button";
 import SearchIcon from './search.svg'
 import {useRouter} from "next/router";

@@ -2,26 +2,34 @@ import React from 'react';
 import classes from "./ReviewForm.module.css";
 import cn from "classnames";
 import {ReviewFormProps} from "@/components/ReviewForm/ReviewForm.props";
-import Input from "@/components/Input/Input";
-import Rating from "@/components/Rating/Rating";
-import Textarea from "@/components/Textarea/Textarea";
+import {Input} from "@/components/Input/Input";
+import {Rating} from "@/components/Rating/Rating";
+import {Textarea} from "@/components/Textarea/Textarea";
 import Button from "@/components/Button/Button";
 import CloseIcon from './close.svg';
+import {Controller, useForm} from "react-hook-form";
+import {ReviewFormInterface} from "@/interfaces/reviewForm.interface";
 
 function ReviewForm({productId, className, ...props} :ReviewFormProps) :JSX.Element {
+    const {register, control, handleSubmit} = useForm<ReviewFormInterface>();
+    const onSubmit = (data: ReviewFormInterface) => {
+        console.log(data);
+    };
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cn(classes.reviewForm, className)}
                {...props}>
-                <Input placeholder={'Имя'}/>
-                <Input className={classes.title} placeholder={'Заголовок отзыва'}/>
+                <Input {...register("name")} placeholder={'Имя'}/>
+                <Input {...register('title')} className={classes.title} placeholder={'Заголовок отзыва'}/>
                 <div className={classes.rating}>
                     <span>Оценка:</span>
-                    <Rating rating={0}/>
+                    <Controller control={control} render={({field}) => (
+                        <Rating isEditable rating={field.value} ref={field.ref} setRating={field.onChange}/>
+                    )} name={'rating'} />
                 </div>
-                <Textarea className={classes.description} placeholder={'Текст отзыва'}/>
+                <Textarea {...register('description')} className={classes.description} placeholder={'Текст отзыва'}/>
                 <div className={classes.submit}>
-                    <Button appearance={'primary'}>Отправить</Button>
+                    <Button appearance={'primary'} type={"submit"}>Отправить</Button>
                 </div>
             </div>
             <div className={classes.success}>
@@ -30,7 +38,7 @@ function ReviewForm({productId, className, ...props} :ReviewFormProps) :JSX.Elem
                 <CloseIcon className={classes.closeIcon} />
             </div>
 
-        </>
+        </form>
     );
 }
 

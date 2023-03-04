@@ -5,7 +5,7 @@ import {ReviewProps} from "@/components/Review/Review.props";
 import UserIcon from './user.svg';
 import { format } from 'date-fns';
 import {ru} from "date-fns/locale";
-import Rating from "@/components/Rating/Rating";
+import {Rating} from "@/components/Rating/Rating";
 
 function Review({review, className, ...props} :ReviewProps) :JSX.Element {
     const {name, title, description, createdAt, rating} = review;
