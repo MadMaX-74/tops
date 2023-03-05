@@ -5,6 +5,7 @@ import {LayoutProps} from "./Layout.props";
 import Sidebar from './Sidebar/Sidebar';
 import classes from "./Layout.module.css";
 import {AppContextProvider, IAppContext} from "@/context/app.context";
+import Up from "@/components/Up/Up";
 
 function Layout({children} :LayoutProps) :JSX.Element{
     return (
@@ -15,6 +16,7 @@ function Layout({children} :LayoutProps) :JSX.Element{
                 {children}
             </div>
             <Footer className={classes.footer }/>
+            <Up />
         </div>
     );
 }
