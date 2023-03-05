@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import {TopPageComponentProps} from "@/page-components/TopPageComponent/TopPageComponent.props";
 import Htag from "@/components/Htag/Htag";
 import Tag from "@/components/Tag/Tag";
@@ -12,10 +12,13 @@ import {SortReducer} from "@/page-components/TopPageComponent/sort.reducer";
 import Product from "@/components/Product/Product";
 
 function TopPageComponent({page, firstCategory, products} :TopPageComponentProps) :JSX.Element {
-    const [{products: sortedProducts, sort}, dispathSort] = useReducer(SortReducer, {products, sort: SortEnum.Rating});
+    const [{products: sortedProducts, sort}, dispatchSort] = useReducer(SortReducer, {products, sort: SortEnum.Rating});
     const setSort = (sort: SortEnum) => {
-         dispathSort({type: sort});
+         dispatchSort({type: sort});
     };
+    useEffect(() => {
+        dispatchSort({type: 'reset', initialState: products});
+    }, [products]);
     return (
         <div className={classes.wrapper}>
             <div className={classes.title}>

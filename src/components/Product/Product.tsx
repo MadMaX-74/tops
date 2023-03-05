@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import classes from "./Product.module.css";
 import cn from "classnames";
 import {ProductProps} from "@/components/Product/Product.props";
-import Card from "@/components/Card/Card";
+import {Card} from "@/components/Card/Card";
 import Htag from '../Htag/Htag';
 import {Rating} from "@/components/Rating/Rating";
 import Tag from "@/components/Tag/Tag";
@@ -15,9 +15,17 @@ import Review from "@/components/Review/Review";
 import ReviewForm from "@/components/ReviewForm/ReviewForm";
 
 function Product({product, className, ...props} :ProductProps) :JSX.Element {
-    const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
+    const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+    const reviewRef = useRef<HTMLDivElement>(null);
+    const scrollToReiew = () => {
+         setIsReviewOpened(true);
+         reviewRef.current?.scrollIntoView({
+             behavior: 'smooth',
+             block: "start"
+         });
+    };
     return (
-        <>
+        <div className={className} {...props}>
            <Card className={classes.product}>
                <div className={classes.logo}>
                    <Image src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} width={70} height={70} />
@@ -36,7 +44,7 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
                <div className={classes.tags}>{product.categories.map(c => <Tag key={c} color='ghost' className={classes.category}>{c}</Tag>)}</div>
                <div className={classes.priceTitle}>Цена</div>
                <div className={classes.creditTitle}>Кредит</div>
-               <div className={classes.rateTitle}>{product.reviewCount} {declOfNum(product.reviewCount, ['Отзыв', 'Отзыва', 'Отзывов'])}</div>
+               <div className={classes.rateTitle}><a href="#ref" onClick={scrollToReiew}>{product.reviewCount} {declOfNum(product.reviewCount, ['Отзыв', 'Отзыва', 'Отзывов'])}</a></div>
                <Devider className={classes.hr} />
                <div className={classes.description}>{product.description}</div>
                <div className={classes.feature}>
@@ -70,7 +78,7 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
             <Card color={'blue'} className={cn(classes.reviews, {
                 [classes.opened] : isReviewOpened,
                 [classes.closed]: !isReviewOpened
-            })}>
+            })} ref={reviewRef}>
                 {product.reviews.map(r =>
                     <div key={r._id}>
                         <Review review={r} />
@@ -78,7 +86,7 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
                     </div>)}
                 <ReviewForm productId={product._id} />
             </Card>
-        </>
+        </div>
     );
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import classes from "./hhData.module.css";
 import {HhDataProps} from "@/components/hhData/hhData.props";
 import RateIcon from './rate.svg';
-import Card from "@/components/Card/Card";
+import {Card} from "@/components/Card/Card";
 import {priceRu} from "@/helpers/helpers";
 
 function HhData({count, juniorSalary, middleSalary, seniorSalary} :HhDataProps ) :JSX.Element {
