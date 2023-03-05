@@ -11,7 +11,7 @@ import {Controller, useForm} from "react-hook-form";
 import {ReviewFormInterface} from "@/interfaces/reviewForm.interface";
 
 function ReviewForm({productId, className, ...props} :ReviewFormProps) :JSX.Element {
-    const {register, control, handleSubmit} = useForm<ReviewFormInterface>();
+    const {register, control, handleSubmit, formState: {errors}} = useForm<ReviewFormInterface>();
     const onSubmit = (data: ReviewFormInterface) => {
         console.log(data);
     };
@@ -19,15 +19,19 @@ function ReviewForm({productId, className, ...props} :ReviewFormProps) :JSX.Elem
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cn(classes.reviewForm, className)}
                {...props}>
-                <Input {...register("name")} placeholder={'Имя'}/>
-                <Input {...register('title')} className={classes.title} placeholder={'Заголовок отзыва'}/>
+                <Input
+                    {...register("name", {required: {value: true, message: 'Заполните имя'}})}
+                    placeholder={'Имя'}
+                    error={errors.name}
+                />
+                <Input {...register('title', {required: {value: true, message: 'Заполните заголовок'}})} className={classes.title} placeholder={'Заголовок отзыва'} error={errors.title}/>
                 <div className={classes.rating}>
                     <span>Оценка:</span>
-                    <Controller control={control} render={({field}) => (
-                        <Rating isEditable rating={field.value} ref={field.ref} setRating={field.onChange}/>
-                    )} name={'rating'} />
+                    <Controller control={control} rules={{required: {value: true, message: 'Поставьте оценку'}}} render={({field}) => (
+                        <Rating isEditable rating={field.value} ref={field.ref } setRating={field.onChange} error={errors.rating}/>
+                    )} name={'rating'}  />
                 </div>
-                <Textarea {...register('description')} className={classes.description} placeholder={'Текст отзыва'}/>
+                <Textarea {...register('description', {required: {value: true, message: 'Заполните описание'}})} className={classes.description} placeholder={'Текст отзыва'} error={errors.description}/>
                 <div className={classes.submit}>
                     <Button appearance={'primary'} type={"submit"}>Отправить</Button>
                 </div>
