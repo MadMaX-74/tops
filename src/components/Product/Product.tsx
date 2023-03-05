@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {ForwardedRef, forwardRef, useRef, useState} from 'react';
 import classes from "./Product.module.css";
 import cn from "classnames";
 import {ProductProps} from "@/components/Product/Product.props";
@@ -13,8 +13,9 @@ import Devider from "@/components/Devider/Devider";
 import Image from "next/image";
 import Review from "@/components/Review/Review";
 import ReviewForm from "@/components/ReviewForm/ReviewForm";
+import {motion} from "framer-motion";
 
-function Product({product, className, ...props} :ProductProps) :JSX.Element {
+export const Product = motion (forwardRef(({product, className, ...props} :ProductProps, ref:ForwardedRef<HTMLDivElement>) :JSX.Element => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
     const reviewRef = useRef<HTMLDivElement>(null);
     const scrollToReiew = () => {
@@ -25,7 +26,7 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
          });
     };
     return (
-        <div className={className} {...props}>
+        <div className={className} {...props} ref={ref}>
            <Card className={classes.product}>
                <div className={classes.logo}>
                    <Image src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} width={70} height={70} />
@@ -88,6 +89,5 @@ function Product({product, className, ...props} :ProductProps) :JSX.Element {
             </Card>
         </div>
     );
-}
+}));
 
-export default Product;
