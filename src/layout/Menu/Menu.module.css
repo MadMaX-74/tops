@@ -37,10 +37,7 @@
     line-height: 19px;
 }
 .secondLevelBlock {
-    display: none;
-}
-.secondLevelBlockOpened {
-    display: block;
+    overflow: hidden;
 }
 .thirdLevel {
     display: block;
