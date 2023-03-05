@@ -27,6 +27,16 @@
     border-radius: 5px;
     margin-top: 10px;
 }
+.error {
+    background-color: #fea291;
+    padding: 20px;
+    position: relative;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.errorTitle {
+    font-weight: bold;
+}
 .successTitle {
     font-weight: bold;
 }
@@ -35,6 +45,9 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
+}
+.error .closeIcon line {
+    stroke: var(--red);
 }
 @media screen and (max-width: 1100px) {
     .reviewForm {
