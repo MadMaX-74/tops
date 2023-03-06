@@ -11,7 +11,6 @@
 }
 .header {
     grid-area: header;
-    display: none;
 }
 .sidebar {
     grid-area: sidebar;
@@ -34,12 +33,9 @@
     .sidebar {
         display: none;
     }
-    .header {
-        display: block;
-    }
     .body {
         padding: 15px;
     }
-    
+
 }
 

@@ -15,14 +15,14 @@
     background-color: var(--primary-hover);
 }
 .white {
-    background-color: var(--white);
+    background-color: #fff;
 }
 .white svg * {
     fill: var(--primary);
 }
 .white:hover {
-    background-color: var(--white);
+    background-color: var(--primary);
 }
 .white:hover svg * {
-    fill: var(--primary);
+    fill: #fff;
 }
