@@ -3,6 +3,7 @@ import classes from "./Up.module.css";
 import UpIcon from './up.svg';
 import {useScrollY} from "@/hooks/useScrollY";
 import {motion, useAnimation} from "framer-motion";
+import ButtonIcon from "@/components/ButtonIcon/ButtonIcon";
 
 function Up() :JSX.Element {
     const controls = useAnimation();
@@ -17,14 +18,13 @@ function Up() :JSX.Element {
         });
     };
     return (
-        <motion.button
+        <motion.div
             className={classes.up}
-            onClick={() => scrollToTop()}
             animate={controls}
             initial={{opacity: 0}}
         >
-            <UpIcon />
-        </motion.button>
+            <ButtonIcon icon={"up"} appearance={"primary"} onClick={() => scrollToTop()} />
+        </motion.div>
     );
 }
 

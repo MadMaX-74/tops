@@ -114,13 +114,8 @@
     border-bottom: 1px dashed var(--gray-light);
     margin-bottom: 5px;
 }
-.closed {
+.reviews {
     overflow: hidden;
-    max-height: 0;
-    padding: 0;
-}
-.opened {
-    max-height: max-content;
     padding: 30px;
 }
 .rateTitle a {
